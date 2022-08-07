@@ -3,66 +3,66 @@ import { Link, Navigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './Login.css';
 
-// import Signup from './Signup';
-// import { setLogin, setUser } from '../../features/user/userSlice';
+import Signup from './Signup';
+import { setUser } from '../../../features/user/userSlice';
 
 
 function Login() {
 
-    // const user = useSelector(store => store.user);
-    // const dispatch = useDispatch();
+    const user = useSelector(store => store.user);
+    const dispatch = useDispatch();
 
-    // const location = useLocation();
+    const location = useLocation();
 
-    // const[loginForm, setLoginForm] = React.useState({
-    //     email: "",
-    //     password: ""
-    // });
+    const[loginForm, setLoginForm] = React.useState({
+        email: "",
+        password: ""
+    });
 
-    // function handleForm(event) {
-    //     setLoginForm(loginForm => {
-    //         return {... loginForm, [event.target.name]: event.target.value}
-    //     });
-    // }
+    function handleForm(event) {
+        setLoginForm(loginForm => {
+            return {... loginForm, [event.target.name]: event.target.value}
+        });
+    }
 
-    // async function checkLogin(event) {
-    //     event.preventDefault();
+    async function checkLogin(event) {
+        event.preventDefault();
         
-    //     const res = await fetch("https://localhost:7276/auth", {
-    //         method: "POST",
-    //         headers: {
-    //             'accept': 'application/json',
-    //             'Content-Type':'application/json'
-    //         },
-    //         body: JSON.stringify(loginForm)
-    //     });
+        const res = await fetch("https://localhost:7295/auth", {
+            method: "POST",
+            headers: {
+                'accept': 'application/json',
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(loginForm)
+        });
 
-    //     switch(res.status) {
-    //         case 200:
-    //             const text = await res.json();
+        switch(res.status) {
+            case 200:
+                const text = await res.json();
 
-    //             if(localStorage.getItem("JWT") !== null) {
-    //                 localStorage.setItem("JWT", text.jwt);
-    //             } else {
-    //                 localStorage.setItem("JWT", text.jwt);
-    //             }
+                if(localStorage.getItem("JWT") !== null) {
+                    localStorage.setItem("JWT", text.jwt);
+                } else {
+                    localStorage.setItem("JWT", text.jwt);
+                }
 
-    //             console.log(text.jwt);
+                console.log(text);
 
-    //             dispatch(setUser(text.user));
-    //         break;
-    //         case 404:
-    //             alert("email or password is wrong");
-    //         break;
-    //         case 500:
-    //             alert("something went wrong, please try again or contact our support staff");
-    //         break;
-    //     }
-    // }
+                dispatch(setUser(text.webUser));
+            break;
+            case 404:
+                alert("email or password is wrong");
+            break;
+            case 500:
+                alert("something went wrong, please try again or contact our support staff");
+            break;
+        }
+    }
 
     return(
         <div className='wrapper'>
-            {/* {user.loggedIn && <Navigate to="/" state={{from: location}} replace={true} />}
+            {user.loggedIn && <Navigate to="/" state={{from: location}} replace={true} />}
             <form className='login-container' onSubmit={checkLogin}>
                 <label>email</label>
                 <input 
@@ -82,7 +82,7 @@ function Login() {
                     />
                 <button type='submit' >login</button>
                 <Link to='/signup' > no account? signup</Link>
-            </form> */}
+            </form>
         </div>
     );
 }
