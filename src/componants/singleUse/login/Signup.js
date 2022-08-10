@@ -49,7 +49,7 @@ function Signup() {
                     setNavigate(true);
                 break;
                 case 409:
-                    alert("an account with this email already exists");
+                    alert((await res.text()));
                 break;
                 case 500:
                     alert("something went wrong, please try again later or contact our support staff");

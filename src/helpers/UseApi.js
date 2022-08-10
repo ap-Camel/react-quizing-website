@@ -34,10 +34,10 @@ export default async function UseApi(url, method, body, callback) {
             alert("please login again");
         break;
         case 404:
-            alert(res.statusText);
+            alert((await res.text()));
         break;
         case 409:
-            alert("already exists");
+            alert((await res.text()));
         break;
         case 500:
             alert("something went wrong, please try again later or contact our support staff");
