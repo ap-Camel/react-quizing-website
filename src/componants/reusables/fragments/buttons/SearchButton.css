@@ -6,13 +6,24 @@
 .search-input {
     display: flex;
     justify-self: center;
+}
+
+.search-input-home {
     margin-top: 4em;
 }
 
-.search-input input {
+.search-input-home input {
     min-width: 18em;
     min-height: 3em;
     padding-left: 3em;
+}
+
+.search-input-topList input {
+    margin-top: 1em;
+    width: 100%;
+}
+
+.search-input input {
     background-color: darkslategrey;
     border: none;
     color:antiquewhite;

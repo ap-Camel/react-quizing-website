@@ -1,0 +1,61 @@
+
+.container-searchResultQuizCard {
+    display: grid;
+    align-self: center;
+    justify-items: center;
+    justify-content: center;
+    justify-self: center;
+}
+
+.container-searchResultQuizCard a {
+    display: flex;
+    text-decoration: none;
+    color: black;
+}
+
+.searchResultQuizCard {
+    width: 100px;
+    display: grid;
+    grid-auto-flow: row;
+    margin-left: 1em;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    justify-content: center;
+}
+
+.searchResultQuizCard img  {
+    width: 100px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.searchResultQuizCard p  {
+    margin: 0px;
+    padding: 0px;
+}
+
+.container-topListQuizCard a {
+    display: grid;
+    grid-template-columns: 20fr 21fr;
+    width: 100%;
+}
+
+.container-topListQuizCard p {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.container-topListQuizCard img{
+    width: 100%;
+}
+
+.container-topListQuizCard{
+    min-width: 11em;
+}
+
+.topListQuizCard-data {
+    display: grid;
+    grid-auto-flow: row;
+    
+}

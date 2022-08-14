@@ -7,7 +7,7 @@ function Home() {
 
     return (
         <div className="container">
-            <SearchButton placeholder='search exams' />
+            <SearchButton placeholder='search exams' type="home" />
         </div>
     );
 }

@@ -1,0 +1,13 @@
+.container-quizSearchResultPage {
+    display: grid;
+    grid-auto-flow: column;
+    margin: 0.5em;
+}
+
+@media only screen and (max-width: 500px) {
+    .container-quizSearchResultPage {
+        display: grid;
+        grid-auto-flow: row;
+        margin: 0.5em;
+    }
+  }

@@ -1,0 +1,22 @@
+.container-searchResultList {
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: min-content;
+    gap: 0.5em;
+}
+
+.container-searchResultList h5 {
+    margin: 0;
+    padding: 0;
+}
+
+.search-results {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min-content;
+}
+
+.container-topQuizList {
+    max-width: 20em;
+    min-width: 18em;
+}
