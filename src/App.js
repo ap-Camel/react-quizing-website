@@ -8,6 +8,8 @@ import Home from './componants/singleUse/home/Home';
 import NavBar from './Navbar';
 import QuizSearchResultPage from './componants/singleUse/quiz/QuizSearchResultPage';
 import QuizPage from './componants/singleUse/quiz/QuizPage';
+import UserQuizesPage from './componants/singleUse/quiz/UserQuizesPage';
+import PrvQuizDetailsPage from './componants/singleUse/quiz/PrvQuizDetailsPage';
 
 import './App.css';
 
@@ -37,7 +39,8 @@ function App() {
           user.loggedIn && 
           (
             <>
-
+              <Route path='/quizes' element={ <UserQuizesPage /> } ></Route>
+              <Route path='/quizDetails/:id' element={ <PrvQuizDetailsPage /> } ></Route>
             </>
           )
         }

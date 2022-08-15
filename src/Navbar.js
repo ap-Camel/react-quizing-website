@@ -25,7 +25,8 @@ function NavBar() {
                   </a>
                   <div className="navbar-links">
                     <ul onClick={toogle}>
-                      <li><Link to="/"  state={{from: location}} replace={true} > home </Link></li>                      
+                      <li><Link to="/"  state={{from: location}} replace={true} > home </Link></li> 
+                      <li><Link to='/quizes' state={{from: location}} replace={true} >my quizes</Link></li>                     
                     </ul>
                   </div>
                 </>
