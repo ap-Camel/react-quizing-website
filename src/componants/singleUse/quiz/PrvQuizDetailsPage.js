@@ -3,11 +3,12 @@ import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
 
 import UseApi from "../../../helpers/UseApi";
-import {toogleAdd} from "../../../features/modals/modalSlice";
+import {toogleAdd, toogleDelete} from "../../../features/modals/modalSlice";
 
 import QuizInfoCard from "../../reusables/fragments/cards/QuizInfoCard";
 import PrvQuestionInfo from "../../reusables/fragments/cards/PrvQuestionInfo";
 import AddQuestionModal from "../questions/AddQuestionModal";
+import RemoveModal from '../../reusables/modals/RemoveModal';
 
 function PrvQuizDetailsPage() {
 
@@ -53,9 +54,10 @@ function PrvQuizDetailsPage() {
 
     return (
         <div>
-            {modal.addIsOpen && <AddQuestionModal />}
+            {modal.addIsOpen && <AddQuestionModal data={examInfo} />}
+            {modal.deleteIsOpen && <RemoveModal url={`https://localhost:7295/exam/${examInfo.id}`} />}
             <div>
-                <button>remove</button>
+                <button onClick={() => {dispatch(toogleDelete())}}>remove</button>
                 <button>edit</button>
             </div>
             <div>

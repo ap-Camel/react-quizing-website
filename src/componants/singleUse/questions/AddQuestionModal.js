@@ -3,18 +3,97 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { toogleAdd } from "../../../features/modals/modalSlice";
 import useClickedOutside from "../../../hooks/useClickedOuside";
+import UseApi from '../../../helpers/UseApi';
 
 import "./questions.css";
+import "../../reusables/modals/modals.css";
 
-function AddQuestionModal() {
+function AddQuestionModal({data}) {
 
     const addQuestionModal = useSelector(store => store.addQuestionModal);
     const modal = useSelector(store => store.modal);
     const dispatch = useDispatch();
 
-    function handleAddQuestion(event) {
+    const [questionForm, setQuestionForm] = React.useState(
+        {
+            question: {
+              question: "",
+              difficulty: 1,
+              questionType: "default",
+              hasImage: false,
+              imgUrl: null,
+              examID: data.id
+            },
+            answers: [
+              {
+                correct: false,
+                answer: "",
+                active: true,
+                hasImage: false,
+                imgUrl: null
+              }
+            ]
+          }
+    );
+
+    function handleQuestoinChange(event) {
+        const {name, value} = event.target;
+        setQuestionForm(prevForm => {
+            return {...prevForm, question: {
+                ...prevForm.question,
+                [name]: value
+            }}
+        });
+    }
+
+    function handleAnswersChange(event) {
+        const {name, value, type, checked, id} = event.target;
+        let tempArr = questionForm.answers;
+        tempArr[id] = {
+            ...tempArr[id],
+            [name]: type === "checkbox" ? checked : value
+        }
+
+        setQuestionForm(prevForm => {
+            return {...prevForm, answers: tempArr}
+        })
+    }
+
+    function addAnswer() {
+        let tempAnswers = questionForm.answers.map(item => item);
+        tempAnswers.push({
+            correct: false,
+            answer: "",
+            active: true,
+            hasImage: false,
+            imgUrl: null
+        });
+
+        console.log(tempAnswers);
+        console.log(questionForm);
+
+        setQuestionForm(prevForm => {
+            return {...prevForm, answers: tempAnswers}
+        })
+    }
+
+    function removeAnswer(id) {
+        let tempAnswers = questionForm.answers.filter((item, index) => {
+            return index !== id;
+        })
+        setQuestionForm(prevForm => {
+            return {...prevForm, answers: tempAnswers};
+        })
+    }
+
+    function handleSubmit(event) {
         event.preventDefault();
-        dispatch(toogleAdd());
+        console.log(JSON.stringify(questionForm));
+        UseApi("https://localhost:7295/question/withAnswers", "POST", JSON.stringify(questionForm), (res) => {
+            console.log("add was successful, res: " + res);
+            dispatch(toogleAdd());
+        })
+
     }
 
     let modalRef = useClickedOutside(() => {
@@ -22,10 +101,56 @@ function AddQuestionModal() {
     });
 
     return (
-        <aside ref={modalRef} className="modal-container">
-            <form className="modal">
-                <button onClick={handleAddQuestion}>add</button>
-            </form>
+        <aside className="modal-container">
+            <div ref={modalRef} className="modal">
+                <form onSubmit={handleSubmit}>
+                    <p>question</p>
+                    <input 
+                        name="question"
+                        type="text"
+                        value={questionForm.question.question}
+                        onChange={handleQuestoinChange}
+                        placeholder="question"
+                    />
+                    <p>difficulty</p>
+                    <input 
+                        name="difficulty"
+                        type="number"
+                        value={questionForm.question.difficulty}
+                        onChange={handleQuestoinChange}
+                        placeholder={1}
+                    />
+                    {
+                        questionForm.answers.map((item, index) => {
+                            return(
+                                <div key={index}>
+                                    <p>answer</p>
+                                    <input
+                                        id={index}
+                                        type="text"
+                                        name="answer"
+                                        value={questionForm.answers[index].answer}
+                                        onChange={handleAnswersChange}
+                                        placeholder="answer"
+                                    />
+                                    <p>correct</p>
+                                    <input 
+                                        id={index}
+                                        type="checkbox"
+                                        name="correct"
+                                        checked={questionForm.answers[index].correct}
+                                        onChange={handleAnswersChange}
+                                    />
+                                    <button type="button" onClick={() => removeAnswer(index)}>remove</button>
+                                </div>
+                            );
+                        })
+                    }
+                    <button type="button" onClick={addAnswer}> add answer </button>
+                    <button type="submit" >add</button>
+
+                </form>
+            </div>
         </aside>
     );
 }
