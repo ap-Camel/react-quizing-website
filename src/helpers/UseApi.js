@@ -26,9 +26,14 @@ export default async function UseApi(url, method, body, callback) {
             // text ? callback(text) : callback() ;
         break;
         case 400:
-            const object = (await res.json()).errors;
-            const messages = Object.values(object);
-            alert(messages);
+            try {
+                const object = (await res.json()).errors;
+                const messages = Object.values(object);
+                alert(messages);
+            } catch (error) {
+                alert((await res.text()));
+            }
+            
         break;
         case 401:
             alert("please login again");

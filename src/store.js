@@ -3,6 +3,7 @@ import userReducer from "./features/user/userSlice";
 import examSearchResultsReducer from "./features/exam/examSearchResults";
 import addQuestionModalReducer from "./features/modals/addQuestionModalSlice";
 import modalReducer from "./features/modals/modalSlice";
+import editModalReducer from "./features/modals/editModalSlice";
 
 
 export const store = configureStore({
@@ -10,7 +11,8 @@ export const store = configureStore({
         user: userReducer,
         examSearchResults: examSearchResultsReducer,
         addQuestionModal: addQuestionModalReducer,
-        modal: modalReducer
+        modal: modalReducer,
+        editModal: editModalReducer
     }
 });
 
