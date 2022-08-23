@@ -15,10 +15,10 @@ function EditModal({editObject, url, id}) {
     const [elements, setElements] = React.useState(Object.keys(editForm));
     
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        dispatch(toogleEdit());
-    }
+    // function handleSubmit(event) {
+    //     event.preventDefault();
+    //     dispatch(toogleEdit());
+    // }
 
     function handleChange(event) {
         const {name, value, type, checked } = event.target;
@@ -49,7 +49,7 @@ function EditModal({editObject, url, id}) {
     function checkInputFields() {
         for(const key in editForm) {
             if(!editForm[key].value) {
-                alert("please fill in all of the fields");
+                alert("please fill in all the required fireld");
                 return false;
             }
         }
@@ -72,7 +72,7 @@ function EditModal({editObject, url, id}) {
         <aside className="modal-container">
             <div ref={modalRef} className="modal">
                 <form onSubmit={handleSubmit}>
-                {
+                    {
                         elements.map(item => {
                             if(editForm[item].type === "checkbox") {
                                 return(

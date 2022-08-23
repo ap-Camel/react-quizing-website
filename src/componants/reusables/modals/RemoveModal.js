@@ -4,21 +4,27 @@ import { useDispatch } from "react-redux";
 import UseApi from "../../../helpers/UseApi";
 import { toogleDelete } from "../../../features/modals/modalSlice";
 import useClickedOutside from "../../../hooks/useClickedOuside";
+import { useNavigate } from "react-router-dom";
 
 function RemoveModal({url}) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     function handleDelete(choice) {
 
         if(choice === "confirm") {
-            UseApi(url, "DELETE", null, (res) => {
-                console.log("deleted, res: " + res);
+            console.log("insode deleting");
+            UseApi(url, "DELETE", null, () => {
+                console.log("deleted");
+                navigate(-1);
                 dispatch(toogleDelete());
             })
-        }
+        } 
 
-        console.log("was not deleted");
-        dispatch(toogleDelete());
+        if(choice === "cancel") {
+            console.log("was not deleted");
+            dispatch(toogleDelete());
+        }
     }
 
     let modalRef = useClickedOutside(() => {

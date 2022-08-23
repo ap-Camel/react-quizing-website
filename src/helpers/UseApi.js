@@ -11,19 +11,22 @@ export default async function UseApi(url, method, body, callback) {
         body: body
     });
 
+    let text;
+
     switch(res.status) {
         case 200:
            // alert("action was successful");
-            const text = await res.json();
+            text = await res.json();
             callback(text);
         break;
         case 201:
             alert("created successfully")
+            text = await res.json();
             callback(text);
         break;
         case 204:
-            alert("delete / update was successful");
-            // text ? callback(text) : callback() ;
+            alert("delete / update was successfully ");
+            callback(text);
         break;
         case 400:
             try {
@@ -36,7 +39,7 @@ export default async function UseApi(url, method, body, callback) {
             
         break;
         case 401:
-            alert("please login again");
+            alert("please log in again");
         break;
         case 404:
             alert((await res.text()));
@@ -45,7 +48,7 @@ export default async function UseApi(url, method, body, callback) {
             alert((await res.text()));
         break;
         case 500:
-            alert("something went wrong, please try again later or contact our support staff");
+            alert("something went wrong, please try again later or contact out support staff");
         break;
         default:
             alert(`status code: ${res.status}`);
