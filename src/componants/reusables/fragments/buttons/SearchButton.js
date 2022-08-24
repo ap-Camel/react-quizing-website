@@ -15,7 +15,7 @@ function SearchButton({placeholder, type}) {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const [searchFilter, setSearchFilter] = React.useState(placeholder);
+    const [searchFilter, setSearchFilter] = React.useState("");
 
     function handleChange(event) {
         setSearchFilter(searchfilter => event.target.value)
@@ -74,6 +74,7 @@ function SearchButton({placeholder, type}) {
                 value={searchFilter}
                 onChange={handleChange}
                 onKeyDown={(e) => something(e) }
+                placeholder={placeholder}
                 />
                 <div className="search-icon">
                     <SearchIcon />

@@ -12,6 +12,12 @@ export default async function UseApi(url, method, body, callback) {
     });
 
     let text;
+    let response = "";
+    try {
+        response = await res.clone().json();
+    } catch (error) {
+        response = "";
+    }
 
     switch(res.status) {
         case 200:
@@ -34,7 +40,7 @@ export default async function UseApi(url, method, body, callback) {
                 const messages = Object.values(object);
                 alert(messages);
             } catch (error) {
-                alert((await res.text()));
+                alert(response);
             }
             
         break;

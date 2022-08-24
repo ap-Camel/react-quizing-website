@@ -28,11 +28,20 @@ const userSlice = createSlice({
             state.userName = payload.userName;
             state.loggedIn = true;
             localStorage.setItem("user", JSON.stringify(state));
+        },
+        logout: (state) => {
+            state.email = "";
+            state.firstName = "";
+            state.lastName = "";
+            state.userName = "";
+            state.loggedIn = false;
+            localStorage.setItem("user", "");
+            localStorage.setItem("JWT", "");
         }
     }
 });
 
 
-export const {setLogin, setUser} = userSlice.actions;
+export const {setLogin, setUser, logout} = userSlice.actions;
 
 export default userSlice.reducer;

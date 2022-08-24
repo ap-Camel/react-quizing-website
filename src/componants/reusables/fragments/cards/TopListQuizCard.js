@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function TopListQuizCard({data}) {
     return (
         <div className="container-topListQuizCard">
-            <Link to="/">
+            <Link to={`/details/${data.id}`}>
                 <div>
                     <img src={data.imgURL}/>
                 </div>

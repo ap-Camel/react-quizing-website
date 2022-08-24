@@ -9,7 +9,7 @@ function SearchResultQuizCard({data}) {
 
     return (
         <div className="container-searchResultQuizCard">
-            <Link to='/' >
+            <Link to={`/details/${data.id}`} >
                 <div className="searchResultQuizCard">
                     <img src={data.imgURL} />
                     <p>{data.title}</p>
@@ -17,7 +17,10 @@ function SearchResultQuizCard({data}) {
                     <p>{data.count}</p>
                 </div>
             </Link>
-            <button onClick={() => {navigate(`/quiz/${data.id}`)}} >start</button>
+            <button onClick={() => {
+                localStorage.setItem("quiz", "");
+                navigate(`/quiz/${data.id}`);
+            }} >start</button>
         </div>
     );
 }

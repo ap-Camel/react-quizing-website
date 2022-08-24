@@ -7,6 +7,11 @@ function NavBar() {
 
   const user = useSelector(state => state.user);
   const location = useLocation();
+  const localUser = localStorage.getItem("user");
+  let username = "";
+  if(localUser) {
+    username = (JSON.parse(localUser)).userName;
+  }
 
   function toogle() {
     document.getElementsByClassName('navbar-links')[0].classList.toggle('active');
@@ -26,7 +31,8 @@ function NavBar() {
                   <div className="navbar-links">
                     <ul onClick={toogle}>
                       <li><Link to="/"  state={{from: location}} replace={true} > home </Link></li> 
-                      <li><Link to='/quizes' state={{from: location}} replace={true} >my quizes</Link></li>                     
+                      <li><Link to='/quizes' state={{from: location}} replace={true} >my quizes</Link></li>
+                      <li><Link to='/user' state={{from: location}} replace={true} >{username}</Link></li>
                     </ul>
                   </div>
                 </>

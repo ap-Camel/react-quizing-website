@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import useClickedOutside from "../../../hooks/useClickedOuside";
-import { toogleEdit } from "../../../features/modals/modalSlice";
+import { toogleEdit, toogleEditUsername } from "../../../features/modals/modalSlice";
 import UseApi from "../../../helpers/UseApi";
 
 function EditModal({editObject, url, id}) {
@@ -57,7 +57,12 @@ function EditModal({editObject, url, id}) {
     }
 
     let modalRef = useClickedOutside(() => {
-        dispatch(toogleEdit());
+        console.log(elements[0]);
+        if(elements[0] === "username") {
+            dispatch(toogleEditUsername());
+        } else {
+            dispatch(toogleEdit());
+        }
     })
 
     if(!editForm) {
