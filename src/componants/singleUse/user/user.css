@@ -1,6 +1,10 @@
 .user-details-page-warapper {
     display: grid;
     grid-auto-flow: row;
+    background-color: #66fcf1;
+    margin: 0.5em;
+    padding: 0.5em;
+    border-radius: 5px;
 }
 
 .user-details-page-header {
@@ -19,6 +23,10 @@
     border-radius: 4px;
     justify-self: end;
     align-self: center;
+    border: none;
+    background-color: #1f2833;
+    color: #66fcf1;
+    border-radius: 5px;
 }
 
 .user-details-page-buttons {
@@ -34,4 +42,44 @@
     border-radius: 4px;
     justify-self: center;
     align-self: center;
+    border: none;
+    background-color: #1f2833;
+    color: #66fcf1;
+    border-radius: 5px;
+}
+
+.quiz-history-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.quiz-history-header h3 {
+    margin: 0.4em;
+    text-align: center;
+    color: #66fcf1;
+}
+
+.quiz-history-items {
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 0.3em;
+}
+
+.user-quiz-details-page-wrapper {
+    display: grid;
+    grid-auto-flow: row;
+}
+
+.public-user-info-wrapper {
+    display: grid;
+    grid-auto-flow: row;
+}
+
+.public-user-info-wrapper h2 {
+    text-align: center;
+    background-color: #66fcf1;
+    margin: 0.5em;
+    padding: 0.5em;
+    border-radius: 5px;
+    color: #1f2833;
 }

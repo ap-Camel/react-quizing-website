@@ -37,7 +37,7 @@ function RemoveModal({url, header}) {
                 <h1>{header}</h1>
                 <div className="modal-buttons">
                     <button onClick={() => {handleDelete("confirm")}} >CONFIRM</button>
-                    <button onClick={() => {handleDelete("cancel")}}>CANCEL</button>
+                    <button className="cancel-button" onClick={() => {handleDelete("cancel")}}>CANCEL</button>
                 </div>
             </div>
         </aside>

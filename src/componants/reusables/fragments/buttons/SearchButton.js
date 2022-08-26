@@ -31,7 +31,7 @@ function SearchButton({placeholder, type}) {
 
     async function handleSubmit() {
 
-        const res = await fetch(`https://localhost:7295/exam/search/${searchFilter}`, {
+        const res = await fetch(`https://quizwebsite.azurewebsites.net/exam/search/${searchFilter}`, {
             method: "GET",
             headers: {
                 'accept': 'application/json',

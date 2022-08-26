@@ -1,28 +1,56 @@
-.search-results-list-wrapper h5 {
-    margin: 0.5em 0;
-    padding: 0;
+.search-results-list-wrapper h3 {
+    margin: 0.5em 0.5em;
+    padding: 0.5em;
     text-align: center;
+    justify-self: center;
+    align-self: center;
+    color: #0b0c10;
+    background-color: #c5c6c7;
+    border-radius: 5px;
+
 }
 .search-results-list-wrapper {
-    border: 2px solid black;
 }
 
 .search-results {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 10em);
-    background-color: gray;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color:  #1f2833;
     justify-content: center;
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    gap: 0.5em;
+    row-gap: 0.5em;
+    margin: 0.5em;
 }
+
+@media only screen and (max-width: 900px) {
+    .search-results {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+}
+
+
+@media only screen and (max-width: 740px) {
+    .search-results {
+        grid-template-columns: 1fr;
+    }
+    
+}
+
+@media only screen and (min-width: 1900px) {
+    .search-results {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    
+}
+
 
 @media only screen and (max-width: 430px) {
     .search-results {
         display: grid;
         grid-template-columns: repeat(auto-fit, 45%);
-        background-color: gray;
         justify-content: center;
         overflow-y: scroll;
         -ms-overflow-style: none;
@@ -37,9 +65,9 @@
 
 .top-list-wrapper {
     display: block;
-    background-color: aqua;
+    background-color: #1f2833;
     height: min-content;
-    border : 2px solid black;
+    justify-self: center;
 }
 
 .top-list {
@@ -48,10 +76,18 @@
     justify-content: center;
     gap: 0.5em;
     max-width: 20em;
-    border-top: 2px solid black;
+    justify-self: center;
+    padding: 0.5em;
+
 }
 
-.top-list-wrapper h5 {
-    margin: 0.5em 0;
+.top-list-wrapper h4 {
+    margin: 0.5em 0.5em;
+    padding: 0.5em;
     text-align: center;
+    justify-self: center;
+    align-self: center;
+    color: #0b0c10;
+    background-color: #c5c6c7;
+    border-radius: 5px;
 }

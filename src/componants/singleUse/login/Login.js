@@ -28,7 +28,7 @@ function Login() {
     async function checkLogin(event) {
         event.preventDefault();
         
-        const res = await fetch("https://localhost:7295/auth", {
+        const res = await fetch("https://quizwebsite.azurewebsites.net/auth", {
             method: "POST",
             headers: {
                 'accept': 'application/json',

@@ -14,7 +14,7 @@ function QuizPage() {
 
     React.useEffect(() => {
         if(localStorage.getItem("quiz") === "") {
-            UseApi(`https://localhost:7295/quiz/${id}`, "GET", null, (res) => {
+            UseApi(`https://quizwebsite.azurewebsites.net/quiz/${id}`, "GET", null, (res) => {
             setQuizData(res);
             setRemianingTime(res.duration);
             localStorage.setItem("quiz", JSON.stringify(res));
@@ -64,11 +64,11 @@ function QuizPage() {
         let question = document.getElementById(questionID);
         let childeren = question.getElementsByTagName('p');
         for(let i = 0; i < childeren.length; i++) {
-            childeren[i].style.backgroundColor = "#fff";
+            childeren[i].style.backgroundColor = "#45a29e";
         }
         //
         let element = event.target;
-        element.style.backgroundColor = "#333";
+        element.style.backgroundColor = "#035956";
         setQuiz(prev => {
             let temp = prev.quiz;
             let add = true;
@@ -96,7 +96,7 @@ function QuizPage() {
         let answer = window.confirm("are you sure you want to submit?");
         console.log(answer);
         if(answer) {
-            UseApi("https://localhost:7295/quiz", "POST", JSON.stringify(quiz), (res) => {
+            UseApi("https://quizwebsite.azurewebsites.net/quiz", "POST", JSON.stringify(quiz), (res) => {
             alert(res);
             navigate(-1);
         });

@@ -13,6 +13,8 @@ import PrvQuizDetailsPage from './componants/singleUse/quiz/PrvQuizDetailsPage';
 import PubQuizDetailsPage from './componants/singleUse/quiz/PubQuizDetailsPage';
 import UserDetailsPage from './componants/singleUse/user/UserDetailsPage';
 import UserQuizHistoryPage from './componants/singleUse/user/UserQuizHistoryPage';
+import UserQuizHistoryDetailsPage from './componants/singleUse/user/UserQuizHistoryDetailsPage';
+import PubUserInfo from './componants/singleUse/user/PubUserInfo';
 
 import './App.css';
 
@@ -29,6 +31,7 @@ function App() {
         <Route path='/search-results' element={ <QuizSearchResultPage /> }></Route>
         <Route path='/details/:id' element={ <PubQuizDetailsPage /> }></Route>
         <Route path='/quiz/:id' element={ <QuizPage /> }></Route>
+        <Route path='/user/:username' element={ <PubUserInfo /> }></Route>
         {
           !user.loggedIn && 
           (
@@ -47,6 +50,7 @@ function App() {
               <Route path='/quizDetails/:id' element={ <PrvQuizDetailsPage /> } ></Route>
               <Route path='/user' element={ <UserDetailsPage /> }></Route>
               <Route path='/quizHistory' element={ <UserQuizHistoryPage /> }></Route>
+              <Route path='/quizHistory/:id' element={ <UserQuizHistoryDetailsPage  />}></Route>
             </>
           )
         }

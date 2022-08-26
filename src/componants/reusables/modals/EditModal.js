@@ -97,8 +97,9 @@ function EditModal({editObject, url, id, header}) {
     return (
         <aside className="modal-container">
             <div ref={modalRef} className="modal">
-                <form onSubmit={handleSubmit}>
-                    <h1>{header}</h1>
+            <h1>{header}</h1>
+                <form className="modal-form" onSubmit={handleSubmit}>
+                    
                     {
                         elements.map(item => {
                             if(editForm[item].type === "checkbox") {

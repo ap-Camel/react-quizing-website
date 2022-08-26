@@ -1,5 +1,5 @@
 .add-question-answer:nth-child(odd) {
-    background-color: gray;
+    /* background-color: gray; */
 }
 
 .add-question-answer button {
@@ -9,6 +9,16 @@
     justify-self: center;
     min-height: 2em;
     max-height: 3.5em;
+    background-color: #f4751a;
+    border: none;
+    border-radius: 5px;
+}
+
+.add-question-answer {
+    background-color: #c5c6c7;
+    padding: 0.3em;
+    border-radius: 5px;
+    margin: 0.5em;
 }
 
 .add-questions-buttons {
@@ -24,6 +34,9 @@
     justify-self: center;
     min-height: 2em;
     max-height: 3.5em;
+    border: none;
+    border-radius: 5px;
+    background-color: #66fcf1;
 }
 
 .add-questions-buttons-buttonss {

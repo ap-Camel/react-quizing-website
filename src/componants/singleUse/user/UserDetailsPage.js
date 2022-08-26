@@ -19,7 +19,7 @@ function UserDetailsPage() {
     const [user, setUser] = React.useState("");
 
     React.useEffect(() => {
-        UseApi("https://localhost:7295/webUser", "GET", null, (res) => {
+        UseApi("https://quizwebsite.azurewebsites.net/webUser", "GET", null, (res) => {
             setUser(res);
         });
     }, []);
@@ -52,8 +52,8 @@ function UserDetailsPage() {
 
     return(
         <div className="user-details-page-warapper">
-            { modal.editIsOpen && <EditModal url={"https://localhost:7295/webUser"} editObject={editObject} />}
-            { modal.editUsernameIsOpen && <EditModal editObject={editUsernameObject} />}
+            { modal.editIsOpen && <EditModal url={"https://quizwebsite.azurewebsites.net/webUser"} editObject={editObject} />}
+            { modal.editUsernameIsOpen && <EditModal url={"https://quizwebsite.azurewebsites.net/username"} editObject={editUsernameObject} />}
             <div className="user-details-page-header">
             <button onClick={() => {dispatch(toogleEdit())}}>update info</button>
             <button onClick={handleLogout}>log out</button>

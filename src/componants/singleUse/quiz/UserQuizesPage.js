@@ -16,7 +16,7 @@ function UserQuizesPage() {
 
     React.useEffect(() => {
 
-        UseApi("https://localhost:7295/exam", "GET", null, (res) => {
+        UseApi("https://quizwebsite.azurewebsites.net/exam", "GET", null, (res) => {
             setUserQuizes(res);
         })
     }, []);
@@ -93,7 +93,7 @@ function UserQuizesPage() {
 
     return (
         <div className="user-quiz-page-wrapper">
-            {modal.addIsOpen && <AddModal addObject={addObject} url="https://localhost:7295/exam" header={"New Quiz"}/>}
+            {modal.addIsOpen && <AddModal addObject={addObject} url="https://quizwebsite.azurewebsites.net/exam" header={"New Quiz"}/>}
             <div className="user-quiz-page-button">
                 <button onClick={handleAddExam}>Add New</button>
             </div>

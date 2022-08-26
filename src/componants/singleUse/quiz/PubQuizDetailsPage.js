@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import UseApi from "../../../helpers/UseApi";
 import getDifficulty from "../../../helpers/getDifficulty";
@@ -17,14 +17,14 @@ function PubQuizDetailsPage() {
     const [showQuestoins, setShowQuestions] = React.useState(false);
 
     React.useEffect(() => {
-        UseApi(`https://localhost:7295/exam/${id}`, "GET", null, (res) => {
+        UseApi(`https://quizwebsite.azurewebsites.net/exam/${id}`, "GET", null, (res) => {
             setExamInfo(res);
         } )
     }, []);
 
     React.useEffect(() => {
         if(examInfo !== "") {
-            UseApi(`https://localhost:7295/question/onlyTitle?examID=${examInfo.id}`, "GET", null, res => {
+            UseApi(`https://quizwebsite.azurewebsites.net/question/onlyTitle?examID=${examInfo.id}`, "GET", null, res => {
                 setQuestions(res);
             });
         }
@@ -50,6 +50,7 @@ function PubQuizDetailsPage() {
                 <div className="public-qiuz-details">
                     <img src={examInfo.imgURL} />
                     <div className="public-quiz-details-information">
+                        <Link to={`/user/${examInfo.username}`}><p>{examInfo.username}</p></Link>
                         <p>{examInfo.title}</p>
                         <p>{getDifficulty(examInfo.difficulty)}</p>
                         <p>{examInfo.duration} minutes</p>

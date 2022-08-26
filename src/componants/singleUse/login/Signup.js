@@ -31,7 +31,7 @@ function Signup() {
         event.preventDefault();
 
         if(checkPassword() && checkInputFields()) {
-            const res = await fetch("https://localhost:7295/webUser", {
+            const res = await fetch("https://quizwebsite.azurewebsites.net/webUser", {
                 method: "POST",
                 headers: {
                     'accept': 'application/json',

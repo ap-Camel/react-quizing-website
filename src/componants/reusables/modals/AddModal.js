@@ -86,7 +86,7 @@ function AddModal({addObject, url, header}) {
         <aside className="modal-container">
             <div ref={modalRef}  className="modal" >
                 <h1>{header}</h1>
-                <form onSubmit={handleSubmit}>
+                <form className="modal-form" onSubmit={handleSubmit}>
                     {
                         elements.map(item => {
                             if(addForm[item].type === "checkbox") {

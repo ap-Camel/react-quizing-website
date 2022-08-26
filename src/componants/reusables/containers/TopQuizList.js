@@ -15,7 +15,7 @@ function TopQuizList() {
     const [topQuizes, setTopQuizes] = React.useState("");
 
     React.useEffect(() => {
-        UseApi(`https://localhost:7295/exam/topExams/${10}`, "GET", null, (res) => {
+        UseApi(`https://quizwebsite.azurewebsites.net/exam/topExams/${10}`, "GET", null, (res) => {
             setTopQuizes(res);
         })
     }, [])
@@ -32,7 +32,7 @@ function TopQuizList() {
         <div className="top-list-wrapper">
             <div>
                 <SearchButton placeholder="search exams" type="topList"/>
-                <h5>top quizes</h5>
+                <h4>Top Quizes</h4>
             </div>
             <div className="top-list">
                 {topQuizes.map((item, index) => {

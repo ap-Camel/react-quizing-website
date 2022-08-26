@@ -8,7 +8,7 @@ import UseApi from '../../../helpers/UseApi';
 import "./questions.css";
 import "../../reusables/modals/modals.css";
 
-function AddQuestionModal({data}) {
+function AddQuestionModal({data, header}) {
 
     const addQuestionModal = useSelector(store => store.addQuestionModal);
     const modal = useSelector(store => store.modal);
@@ -89,7 +89,7 @@ function AddQuestionModal({data}) {
     function handleSubmit(event) {
         event.preventDefault();
         console.log(JSON.stringify(questionForm));
-        UseApi("https://localhost:7295/question/withAnswers", "POST", JSON.stringify(questionForm), (res) => {
+        UseApi("https://quizwebsite.azurewebsites.net/question/withAnswers", "POST", JSON.stringify(questionForm), (res) => {
             console.log("add was successful, res: " + res);
             dispatch(toogleAdd());
         })
@@ -103,8 +103,10 @@ function AddQuestionModal({data}) {
     return (
         <aside className="modal-container">
             <div ref={modalRef} className="modal">
-                <form onSubmit={handleSubmit}>
+                <h1>{header}</h1>
+                <form className="modal-form" onSubmit={handleSubmit}>
                     <div className="element">
+
                     <p>question</p>
                     <input 
                         name="question"

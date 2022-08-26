@@ -14,7 +14,7 @@ function SearchResultList() {
     return (
         <div className="search-results-list-wrapper">
             <div>
-                <h5>searchresults</h5>
+                <h3>Search Results</h3>
             </div>
             <div className="search-results">
                 {exams.map(item => {

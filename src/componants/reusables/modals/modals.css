@@ -38,10 +38,11 @@
       max-height: 80%;
       overflow-y: scroll;
       border-radius: var(--radius);
-      padding: 2rem 1rem;
+      padding: 1.5rem 1rem;
       text-align: center;
       -ms-overflow-style: none;
       scrollbar-width: none;
+      background-color: #1f2833;
     }
 
 .modal::-webkit-scrollbar {
@@ -55,13 +56,16 @@
 .element {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  padding: 0.1em;
+  margin: 0.1em;
 }
 
-.element input {
+.element input, select {
   height: 2.0em;
   align-self: center;
   margin-bottom: 0.5em;
-
+  border: none;
+  border-radius: 5px;
 }
 
 .modal-buttons {
@@ -76,9 +80,20 @@
   min-height: 2em;
   max-height: 3.5em;
   width: 70%;
+  border-radius: 5px;
+  border: none;
+  background-color: #66fcf1;
 }
 
 .modal h1 {
   text-align: left;
   margin-bottom: 1.5em;
+  color: #66fcf1;
+}
+
+.modal-form {
+  background-color: #45a29e;
+  padding: 0.5em;
+  margin: 0.5em;
+  border-radius: 5px;
 }

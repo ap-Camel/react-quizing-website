@@ -30,7 +30,7 @@ function NavBar() {
                   </a>
                   <div className="navbar-links">
                     <ul onClick={toogle}>
-                      {/* <li><Link to='/quizHistory' state={{from: location}} replace={true}>History</Link></li> */}
+                      <li><Link to='/quizHistory' state={{from: location}} replace={true}>History</Link></li>
                       <li><Link to='/quizes' state={{from: location}} replace={true} >My Quizes</Link></li>
                       <li><Link to='/user' state={{from: location}} replace={true} >{username}</Link></li>
                     </ul>
