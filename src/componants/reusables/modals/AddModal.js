@@ -8,7 +8,7 @@ import { toogleAdd } from "../../../features/modals/modalSlice";
 import useClickedOutside from "../../../hooks/useClickedOuside";
 import { useNavigate } from "react-router-dom";
 
-function AddModal({addObject, url}) {
+function AddModal({addObject, url, header}) {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -19,6 +19,17 @@ function AddModal({addObject, url}) {
     function handleChange(event) {
         const {name, value, type, checked } = event.target;
         setAddForm(editForm => {
+
+            if(type === "select-one") {
+                console.log(type);
+                return {...addForm, [name]: {
+                    name: addForm[name].name,
+                    value: value,
+                    type: addForm[name].type,
+                    options: addForm[name].options
+                }}
+            }
+
             return {...addForm, [name]: {
                 name: addForm[name].name,
                 value: type === "checkbox" ? checked : value,
@@ -54,6 +65,11 @@ function AddModal({addObject, url}) {
         }
     }
 
+    function handleCancelButton(event) {
+        event.preventDefault();
+        dispatch(toogleAdd());
+    }
+
     let modalRef = useClickedOutside(() => {
         dispatch(toogleAdd());
     })
@@ -69,12 +85,13 @@ function AddModal({addObject, url}) {
     return (
         <aside className="modal-container">
             <div ref={modalRef}  className="modal" >
+                <h1>{header}</h1>
                 <form onSubmit={handleSubmit}>
                     {
                         elements.map(item => {
                             if(addForm[item].type === "checkbox") {
                                 return(
-                                    <>
+                                    <div className="element">
                                     <p>{addForm[item].name}</p>                                    
                                     <input 
                                     name={item}
@@ -82,11 +99,32 @@ function AddModal({addObject, url}) {
                                     onChange={handleChange}
                                     type={addForm[item].type}
                                     />
-                                </>
+                                </div>
                                 );
                             }
+
+                            if(addForm[item].type === "select") {
+                                return(
+                                    <div className="element">
+                                        <p>{addForm[item].name}</p>
+                                        <select
+                                            name={item}
+                                            onChange={handleChange}
+                                        >
+                                            {
+                                                addForm[item].options.map(item => {
+                                                    return(
+                                                        <option value={item.value}>{item.option}</option>
+                                                    )
+                                                })
+                                            }
+                                        </select>
+                                    </div>
+                                )
+                            }
+
                             return(
-                                <>
+                                <div className="element">
                                     <p>{addForm[item].name}</p>                                    
                                     <input 
                                     name={item}
@@ -95,12 +133,15 @@ function AddModal({addObject, url}) {
                                     placeholder={addForm[item].name}
                                     type={addForm[item].type}
                                     />
-                                </>
+                                </div>
                                 
                             );
                         })
                     }
-                    <button>add</button>
+                    <div className="modal-buttons">
+                        <button type="submit">ADD</button>
+                        <button type="button" onClick={handleCancelButton}>CANCEL</button>
+                    </div>
                 </form>
             </div>
         </aside>

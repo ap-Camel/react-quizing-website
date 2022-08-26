@@ -12,6 +12,11 @@
     margin: .5rem;
 }
 
+.brand-title a {
+    text-decoration: none;
+    color: white;
+}
+
 .navbar-links {
     height: 100%;
 }

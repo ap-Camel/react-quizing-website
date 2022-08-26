@@ -10,11 +10,13 @@ function QuizPage() {
 
     const [quizData, setQuizData] = React.useState("");
     const [quiz, setQuiz] = React.useState("");
+    const [remainingTime, setRemianingTime] = React.useState("");
 
     React.useEffect(() => {
         if(localStorage.getItem("quiz") === "") {
             UseApi(`https://localhost:7295/quiz/${id}`, "GET", null, (res) => {
             setQuizData(res);
+            setRemianingTime(res.duration);
             localStorage.setItem("quiz", JSON.stringify(res));
         });
         } else {
@@ -43,6 +45,20 @@ function QuizPage() {
         window.addEventListener("beforeunload", unloadCallback);
         return () => window.removeEventListener("beforeunload", unloadCallback);
       }, []);
+
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            updateRemainingTime();
+        }, 60000);
+
+        return () => clearInterval(interval)
+    }, [])
+
+    function updateRemainingTime() {
+        setRemianingTime(prev => {
+            return prev - 1;
+        })
+    }
 
     function handleAnswerClick(event, answer, questionID) {
         let question = document.getElementById(questionID);
@@ -77,9 +93,14 @@ function QuizPage() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        UseApi("https://localhost:7295/quiz", "POST", JSON.stringify(quiz), (res) => {
+        let answer = window.confirm("are you sure you want to submit?");
+        console.log(answer);
+        if(answer) {
+            UseApi("https://localhost:7295/quiz", "POST", JSON.stringify(quiz), (res) => {
             alert(res);
+            navigate(-1);
         });
+        }
     }
 
 
@@ -93,16 +114,19 @@ function QuizPage() {
     }
 
     return (
-        <div>
+        <div className="quiz-page-wrapper">
+            <div>
+                <h2>{remainingTime} minutes remaining</h2>
+            </div>
             {
                 quizData.quiz.map((question, index) => {
                     return(
-                        <div key={question.questionID} id={`${question.questionID}`}>
-                            <h3>{question.question}</h3>
+                        <div className="quiz-page-questions" key={question.questionID} id={`${question.questionID}`}>
+                            <h3>{index + 1}) {question.question}</h3>
                             {
                                 question.answers.map((answer, index) => {
                                     return(
-                                        <p key={index} id={index} onClick={event => handleAnswerClick(event, answer,question.questionID)}>{answer}</p>
+                                        <p key={index} id={index} onClick={event => handleAnswerClick(event, answer,question.questionID)}>{String.fromCharCode(index + 65)}) {answer}</p>
                                     );
                                 })
                             }

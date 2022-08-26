@@ -12,6 +12,7 @@ import UserQuizesPage from './componants/singleUse/quiz/UserQuizesPage';
 import PrvQuizDetailsPage from './componants/singleUse/quiz/PrvQuizDetailsPage';
 import PubQuizDetailsPage from './componants/singleUse/quiz/PubQuizDetailsPage';
 import UserDetailsPage from './componants/singleUse/user/UserDetailsPage';
+import UserQuizHistoryPage from './componants/singleUse/user/UserQuizHistoryPage';
 
 import './App.css';
 
@@ -45,6 +46,7 @@ function App() {
               <Route path='/quizes' element={ <UserQuizesPage /> } ></Route>
               <Route path='/quizDetails/:id' element={ <PrvQuizDetailsPage /> } ></Route>
               <Route path='/user' element={ <UserDetailsPage /> }></Route>
+              <Route path='/quizHistory' element={ <UserQuizHistoryPage /> }></Route>
             </>
           )
         }

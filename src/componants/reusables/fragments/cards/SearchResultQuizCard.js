@@ -7,20 +7,37 @@ function SearchResultQuizCard({data}) {
 
     const navigate = useNavigate();
 
+    function getDifficulty(number) {
+        switch(number) {
+            case 1:
+                return "very easy"
+            case 2:
+                return "easy";
+            case 3:
+                return "normal";
+            case 4:
+                return "hard";
+            case 5:
+                return "very hard";
+            default:
+                return "undefined";
+        }
+    }
+
     return (
-        <div className="container-searchResultQuizCard">
+        <div className="search-result-card-wrapper">
             <Link to={`/details/${data.id}`} >
-                <div className="searchResultQuizCard">
-                    <img src={data.imgURL} />
+                <div className="search-result-card">
+                    <img src={data.imgURL ? data.imgURL : "https://www.viewstorm.com/wp-content/uploads/2014/10/default-img.gif"} placeholder="image"/>
                     <p>{data.title}</p>
-                    <p>{data.difficulty}</p>
-                    <p>{data.count}</p>
+                    <p>{getDifficulty(data.difficulty)}</p>
+                    <p>{data.count} tries</p>
                 </div>
             </Link>
             <button onClick={() => {
                 localStorage.setItem("quiz", "");
                 navigate(`/quiz/${data.id}`);
-            }} >start</button>
+            }} >START</button>
         </div>
     );
 }

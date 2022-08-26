@@ -86,8 +86,30 @@ function PrvQuizDetailsPage() {
         },
         difficulty: {
             value: examInfo.difficulty,
-            type: "number",
-            name: "difficulty"
+            type: "select",
+            name: "difficulty",
+            options: [
+                {
+                    value: 1,
+                    option: "very easy"
+                },
+                {
+                    value: 2,
+                    option: "easy"
+                },
+                {
+                    value: 3,
+                    option: "normal"
+                },
+                {
+                    value: 4,
+                    option: "hard"
+                },
+                {
+                    value: 5,
+                    option: "very hard"
+                },
+            ]
         },
         imgURL: {
             value: examInfo.imgURL,
@@ -105,22 +127,25 @@ function PrvQuizDetailsPage() {
     }
 
     return (
-        <div>
+        <div className="private-quiz-details-page-wrapper">
             {modal.addIsOpen && <AddQuestionModal data={examInfo} />}
-            {modal.deleteIsOpen && <RemoveModal url={`https://localhost:7295/exam/${examInfo.id}`} />}
-            {modal.editIsOpen && <EditModal id={examInfo.id} editObject={editObject} url={`https://localhost:7295/exam`} />}
-            <div>
-                <button onClick={() => {dispatch(toogleDelete())}}>remove</button>
-                <button onClick={() => {
-                    console.log(editObject);
-                    dispatch(toogleEdit())
-                    }}>edit</button>
+            {modal.deleteIsOpen && <RemoveModal url={`https://localhost:7295/exam/${examInfo.id}`} header="Remove Quiz"/>}
+            {modal.editIsOpen && <EditModal id={examInfo.id} editObject={editObject} url={`https://localhost:7295/exam`} header="Edit Quiz"/>}
+            <div className="public-quiz-details-buttons-wrapper">
+                <div className="public-quiz-details-buttons">
+                    <button onClick={() => {dispatch(toogleDelete())}}>Remove</button>
+                    <button onClick={() => {
+                        console.log(editObject);
+                        dispatch(toogleEdit())
+                        }}>Edit</button>
+                </div>
             </div>
             <div>
                 <QuizInfoCard data={examInfo} />
             </div>
-            <div>
-                <button onClick={handleAddQuestion}>add new</button>
+            <div className="private-quiz-details-questions-header">
+                <h3>Questions</h3>
+                <button onClick={handleAddQuestion}>Add New</button>
             </div>
             <div>
                 {

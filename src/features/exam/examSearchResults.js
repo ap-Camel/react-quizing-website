@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit/";
 
 
-const initialState = {
-    exams: []
-}
+
+const initialState = localStorage.getItem("search") ? JSON.parse(localStorage.getItem("search")) : { exams: []}
 
 
 const examSearchResults = createSlice({
@@ -12,6 +11,7 @@ const examSearchResults = createSlice({
     reducers: {
         setSearchResults: (state, {payload}) => {
             state.exams = payload;
+            localStorage.setItem("search", JSON.stringify(state));
         }
     }
 });

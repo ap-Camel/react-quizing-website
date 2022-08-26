@@ -20,7 +20,7 @@ function NavBar() {
   return(
       <header>
           <nav className="navbar">
-              <div className="brand-title">Brand Name</div>
+              <div className="brand-title"><Link to="/"  state={{from: location}} replace={true} >Home</Link></div>
               {user.loggedIn && (
                 <>
                   <a href="#" className="toggle-button" onClick={toogle}>
@@ -30,8 +30,8 @@ function NavBar() {
                   </a>
                   <div className="navbar-links">
                     <ul onClick={toogle}>
-                      <li><Link to="/"  state={{from: location}} replace={true} > home </Link></li> 
-                      <li><Link to='/quizes' state={{from: location}} replace={true} >my quizes</Link></li>
+                      {/* <li><Link to='/quizHistory' state={{from: location}} replace={true}>History</Link></li> */}
+                      <li><Link to='/quizes' state={{from: location}} replace={true} >My Quizes</Link></li>
                       <li><Link to='/user' state={{from: location}} replace={true} >{username}</Link></li>
                     </ul>
                   </div>

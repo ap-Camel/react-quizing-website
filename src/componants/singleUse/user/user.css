@@ -1,0 +1,37 @@
+.user-details-page-warapper {
+    display: grid;
+    grid-auto-flow: row;
+}
+
+.user-details-page-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 40%;
+    align-self: center;
+    justify-self: end;
+    margin-right: 0.5em;
+}
+
+.user-details-page-header button {
+    width: 85%;
+    min-height: 2.5em;
+    max-height: 4em;
+    border-radius: 4px;
+    justify-self: end;
+    align-self: center;
+}
+
+.user-details-page-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 0.5em;
+}
+
+.user-details-page-buttons button {
+    width: 30%;
+    min-height: 2.5em;
+    max-height: 4em;
+    border-radius: 4px;
+    justify-self: center;
+    align-self: center;
+}

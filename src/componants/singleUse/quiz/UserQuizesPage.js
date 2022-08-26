@@ -49,8 +49,30 @@ function UserQuizesPage() {
         },
         difficulty: {
             value: 3,
-            type: "number",
-            name: "difficulty"
+            type: "select",
+            name: "difficulty",
+            options: [
+                {
+                    value: 1,
+                    option: "very easy"
+                },
+                {
+                    value: 2,
+                    option: "easy"
+                },
+                {
+                    value: 3,
+                    option: "normal"
+                },
+                {
+                    value: 4,
+                    option: "hard"
+                },
+                {
+                    value: 5,
+                    option: "very hard"
+                },
+            ]
         },
         imgURL: {
             value: "https://www.viewstorm.com/wp-content/uploads/2014/10/default-img.gif",
@@ -70,10 +92,10 @@ function UserQuizesPage() {
     }
 
     return (
-        <div>
-            {modal.addIsOpen && <AddModal addObject={addObject} url="https://localhost:7295/exam" />}
-            <div>
-                <button onClick={handleAddExam}>add new</button>
+        <div className="user-quiz-page-wrapper">
+            {modal.addIsOpen && <AddModal addObject={addObject} url="https://localhost:7295/exam" header={"New Quiz"}/>}
+            <div className="user-quiz-page-button">
+                <button onClick={handleAddExam}>Add New</button>
             </div>
             <div>
                 {

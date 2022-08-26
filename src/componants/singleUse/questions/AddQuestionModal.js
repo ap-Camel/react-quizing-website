@@ -104,6 +104,7 @@ function AddQuestionModal({data}) {
         <aside className="modal-container">
             <div ref={modalRef} className="modal">
                 <form onSubmit={handleSubmit}>
+                    <div className="element">
                     <p>question</p>
                     <input 
                         name="question"
@@ -112,18 +113,25 @@ function AddQuestionModal({data}) {
                         onChange={handleQuestoinChange}
                         placeholder="question"
                     />
+                    </div>
+                    <div className="element">
                     <p>difficulty</p>
-                    <input 
-                        name="difficulty"
-                        type="number"
-                        value={questionForm.question.difficulty}
-                        onChange={handleQuestoinChange}
-                        placeholder={1}
-                    />
+                    <select
+                    name="difficulty"
+                    onChange={handleQuestoinChange}
+                    >
+                        <option value={1}>very easy</option>
+                        <option value={2}>easy</option>
+                        <option value={3}>normal</option>
+                        <option value={4}>hard</option>
+                        <option value={5}>very hard</option>
+                    </select>
+                    </div>
                     {
                         questionForm.answers.map((item, index) => {
                             return(
-                                <div key={index}>
+                                <div className="add-question-answer" key={index}>
+                                    <div className="element">
                                     <p>answer</p>
                                     <input
                                         id={index}
@@ -133,6 +141,8 @@ function AddQuestionModal({data}) {
                                         onChange={handleAnswersChange}
                                         placeholder="answer"
                                     />
+                                    </div>
+                                    <div className="element">
                                     <p>correct</p>
                                     <input 
                                         id={index}
@@ -141,13 +151,19 @@ function AddQuestionModal({data}) {
                                         checked={questionForm.answers[index].correct}
                                         onChange={handleAnswersChange}
                                     />
-                                    <button type="button" onClick={() => removeAnswer(index)}>remove</button>
+                                    </div>
+                                    <button type="button" onClick={() => removeAnswer(index)}>Remove Answer</button>
                                 </div>
                             );
                         })
                     }
-                    <button type="button" onClick={addAnswer}> add answer </button>
-                    <button type="submit" >add</button>
+                    <div className="add-questions-buttons">
+                        <button type="button" onClick={addAnswer}> Add New Answer </button>
+                        <div className="add-questions-buttons-buttonss">
+                        <button type="submit" >Add Questions</button>
+                        <button type="button" onClick={() => {dispatch(toogleAdd())}}>Cancel</button>
+                        </div>
+                    </div>
 
                 </form>
             </div>

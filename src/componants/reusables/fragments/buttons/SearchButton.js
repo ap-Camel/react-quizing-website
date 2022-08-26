@@ -76,7 +76,7 @@ function SearchButton({placeholder, type}) {
                 onKeyDown={(e) => something(e) }
                 placeholder={placeholder}
                 />
-                <div className="search-icon">
+                <div className={type === "home" ? "search-icon" : "search-icon-top-list"}>
                     <SearchIcon />
                 </div>
             </div>

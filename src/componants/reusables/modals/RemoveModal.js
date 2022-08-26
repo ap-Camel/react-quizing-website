@@ -6,7 +6,7 @@ import { toogleDelete } from "../../../features/modals/modalSlice";
 import useClickedOutside from "../../../hooks/useClickedOuside";
 import { useNavigate } from "react-router-dom";
 
-function RemoveModal({url}) {
+function RemoveModal({url, header}) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -34,8 +34,11 @@ function RemoveModal({url}) {
     return (
         <aside className="modal-container">
             <div ref={modalRef} className="modal">
-                <button onClick={() => {handleDelete("confirm")}} >confirm</button>
-                <button onClick={() => {handleDelete("cancel")}}>cancel</button>
+                <h1>{header}</h1>
+                <div className="modal-buttons">
+                    <button onClick={() => {handleDelete("confirm")}} >CONFIRM</button>
+                    <button onClick={() => {handleDelete("cancel")}}>CANCEL</button>
+                </div>
             </div>
         </aside>
     );

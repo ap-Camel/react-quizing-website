@@ -40,4 +40,45 @@
       border-radius: var(--radius);
       padding: 2rem 1rem;
       text-align: center;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
+
+.modal::-webkit-scrollbar {
+  display: none;
+}
+
+.modal p {
+  margin: 0.2em;
+}
+
+.element {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.element input {
+  height: 2.0em;
+  align-self: center;
+  margin-bottom: 0.5em;
+
+}
+
+.modal-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.modal-buttons button {
+  margin-top: 0.5em;
+  align-self: center;
+  justify-self: center;
+  min-height: 2em;
+  max-height: 3.5em;
+  width: 70%;
+}
+
+.modal h1 {
+  text-align: left;
+  margin-bottom: 1.5em;
+}

@@ -12,7 +12,7 @@ function SearchResultList() {
 
 
     return (
-        <div className="container-searchResultList">
+        <div className="search-results-list-wrapper">
             <div>
                 <h5>searchresults</h5>
             </div>

@@ -51,18 +51,29 @@ function UserDetailsPage() {
     }
 
     return(
-        <div>
+        <div className="user-details-page-warapper">
             { modal.editIsOpen && <EditModal url={"https://localhost:7295/webUser"} editObject={editObject} />}
             { modal.editUsernameIsOpen && <EditModal editObject={editUsernameObject} />}
+            <div className="user-details-page-header">
             <button onClick={() => {dispatch(toogleEdit())}}>update info</button>
             <button onClick={handleLogout}>log out</button>
+            </div>
+            <div className="element">
             <p>email</p>
             <p>{user.email}</p>
+            </div>
+            <div className="element">
             <p>name</p>
             <p>{`${user.firstName} ${user.lastName}`}</p>
+            </div>
+            <div className="element">
             <p>username</p>
             <p>{user.userName}</p>
+            </div>
+            <div className="user-details-page-buttons">
             <button onClick={() => {dispatch(toogleEditUsername())}}>change username</button>
+            </div>
+            
         </div>
     );
 }

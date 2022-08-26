@@ -1,0 +1,32 @@
+.add-question-answer:nth-child(odd) {
+    background-color: gray;
+}
+
+.add-question-answer button {
+    margin-top: 0.3em;
+    margin-bottom: 0.5em;
+    align-self: center;
+    justify-self: center;
+    min-height: 2em;
+    max-height: 3.5em;
+}
+
+.add-questions-buttons {
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 0.5em;
+    margin-top: 0.5em;
+}
+
+.add-questions-buttons button {
+    margin-top: 0.5em;
+    align-self: center;
+    justify-self: center;
+    min-height: 2em;
+    max-height: 3.5em;
+}
+
+.add-questions-buttons-buttonss {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

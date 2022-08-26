@@ -5,26 +5,44 @@ import './containers.css';
 
 import TopListQuizCard from "../fragments/cards/TopListQuizCard";
 import SearchButton from "../fragments/buttons/SearchButton";
+import UseApi from "../../../helpers/UseApi";
 
 function TopQuizList() {
 
-    const {exams} = useSelector(store => store.examSearchResults);
+    const {exams} = useSelector(store => store.examSearchResults);    
     const dispatch = useDispatch();
 
+    const [topQuizes, setTopQuizes] = React.useState("");
+
+    React.useEffect(() => {
+        UseApi(`https://localhost:7295/exam/topExams/${10}`, "GET", null, (res) => {
+            setTopQuizes(res);
+        })
+    }, [])
+
+    if(topQuizes === "") {
+        return(
+            <div>
+                wait
+            </div>
+        );
+    }
+
     return (
-        <div className="container-topQuizList">
+        <div className="top-list-wrapper">
             <div>
                 <SearchButton placeholder="search exams" type="topList"/>
                 <h5>top quizes</h5>
             </div>
-            <div>
-
+            <div className="top-list">
+                {topQuizes.map((item, index) => {
+                    if(index < 6) {
+                        return(
+                            <TopListQuizCard key={item.id} data={item}/>
+                        );
+                    }
+                })}
             </div>
-            {exams.map(item => {
-                return(
-                    <TopListQuizCard key={item.id} data={item}/>
-                );
-            })}
         </div>
     );
 }
