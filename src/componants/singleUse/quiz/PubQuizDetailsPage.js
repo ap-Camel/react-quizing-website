@@ -15,6 +15,7 @@ function PubQuizDetailsPage() {
     const [examInfo, setExamInfo] = React.useState("");
     const [questions, setQuestions] = React.useState("");
     const [showQuestoins, setShowQuestions] = React.useState(false);
+    // const [url, seturl] = React.useState(id);
 
     React.useEffect(() => {
         UseApi(`https://quizwebsite.azurewebsites.net/exam/${id}`, "GET", null, (res) => {
@@ -29,6 +30,12 @@ function PubQuizDetailsPage() {
             });
         }
     }, [examInfo]);
+
+    React.useEffect(() => {
+        if(examInfo !== "") {
+            window.location.reload();
+        }
+    }, [id]);
 
     function handleStart(event) {
         event.preventDefault();

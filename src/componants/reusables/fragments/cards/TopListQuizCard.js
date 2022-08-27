@@ -23,7 +23,7 @@ function TopListQuizCard({data}) {
 
     return (
         <div className="top-list-card-wrapper">
-            <Link to={`/details/${data.id}`}>
+            <Link to={`/details/${data.id}`} replace={true}>
                 <div>
                     <img src={data.imgURL}/>
                 </div>
