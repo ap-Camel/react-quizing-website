@@ -85,9 +85,12 @@ function UserQuizesPage() {
 
     if(userQuizes === "") {
         return(
-            <div>
-                wait
+            <div className="user-quiz-page-wrapper">
+            {modal.addIsOpen && <AddModal addObject={addObject} url="https://quizwebsite.azurewebsites.net/exam" header={"New Quiz"}/>}
+            <div className="user-quiz-page-button">
+                <button onClick={handleAddExam}>Add New</button>
             </div>
+        </div>
         );
     }
 
