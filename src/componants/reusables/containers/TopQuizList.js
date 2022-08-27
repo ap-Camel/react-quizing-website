@@ -7,6 +7,8 @@ import TopListQuizCard from "../fragments/cards/TopListQuizCard";
 import SearchButton from "../fragments/buttons/SearchButton";
 import UseApi from "../../../helpers/UseApi";
 
+import apiUrl from "../../../helpers/apiUrl";
+
 function TopQuizList() {
 
     const {exams} = useSelector(store => store.examSearchResults);    
@@ -15,7 +17,7 @@ function TopQuizList() {
     const [topQuizes, setTopQuizes] = React.useState("");
 
     React.useEffect(() => {
-        UseApi(`https://quizwebsite.azurewebsites.net/exam/topExams/${10}`, "GET", null, (res) => {
+        UseApi(`${apiUrl}/exam/topExams/${10}`, "GET", null, (res) => {
             setTopQuizes(res);
         })
     }, [])

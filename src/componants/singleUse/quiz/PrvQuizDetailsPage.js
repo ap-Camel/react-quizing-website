@@ -12,6 +12,8 @@ import AddQuestionModal from "../questions/AddQuestionModal";
 import RemoveModal from '../../reusables/modals/RemoveModal';
 import EditModal from "../../reusables/modals/EditModal";
 
+import apiUrl from '../../../helpers/apiUrl';
+
 function PrvQuizDetailsPage() {
 
     const addModal = useSelector(store => store.addQuestionModal);
@@ -24,14 +26,14 @@ function PrvQuizDetailsPage() {
     const [questions, setQuestions] = React.useState("");
 
     React.useEffect(() => {
-        UseApi(`https://quizwebsite.azurewebsites.net/exam/${id}`, "GET", null, (res) => {
+        UseApi(`${apiUrl}/exam/${id}`, "GET", null, (res) => {
             setExamInfo(res);
         } )
     }, []);
 
     React.useEffect(() => {
         if(examInfo !== "") {
-            UseApi(`https://quizwebsite.azurewebsites.net/question/withAnswers?examID=${examInfo.id}`, "GET", null, res => {
+            UseApi(`${apiUrl}/question/withAnswers?examID=${examInfo.id}`, "GET", null, res => {
                 setQuestions(res);
             });
         }
@@ -129,8 +131,8 @@ function PrvQuizDetailsPage() {
     return (
         <div className="private-quiz-details-page-wrapper">
             {modal.addIsOpen && <AddQuestionModal data={examInfo} header="Add Questions"/>}
-            {modal.deleteIsOpen && <RemoveModal url={`https://quizwebsite.azurewebsites.net/exam/${examInfo.id}`} header="Remove Quiz"/>}
-            {modal.editIsOpen && <EditModal id={examInfo.id} editObject={editObject} url={`https://quizwebsite.azurewebsites.net/exam`} header="Edit Quiz"/>}
+            {modal.deleteIsOpen && <RemoveModal url={`${apiUrl}/exam/${examInfo.id}`} header="Remove Quiz"/>}
+            {modal.editIsOpen && <EditModal id={examInfo.id} editObject={editObject} url={`${apiUrl}/exam`} header="Edit Quiz"/>}
             <div className="public-quiz-details-buttons-wrapper">
                 <div className="public-quiz-details-buttons">
                     <button onClick={() => {dispatch(toogleDelete())}}>Remove</button>

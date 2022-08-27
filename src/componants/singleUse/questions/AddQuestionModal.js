@@ -8,6 +8,8 @@ import UseApi from '../../../helpers/UseApi';
 import "./questions.css";
 import "../../reusables/modals/modals.css";
 
+import apiUrl from '../../../helpers/apiUrl';
+
 function AddQuestionModal({data, header}) {
 
     const addQuestionModal = useSelector(store => store.addQuestionModal);
@@ -89,7 +91,7 @@ function AddQuestionModal({data, header}) {
     function handleSubmit(event) {
         event.preventDefault();
         console.log(JSON.stringify(questionForm));
-        UseApi("https://quizwebsite.azurewebsites.net/question/withAnswers", "POST", JSON.stringify(questionForm), (res) => {
+        UseApi(`${apiUrl}/question/withAnswers`, "POST", JSON.stringify(questionForm), (res) => {
             console.log("add was successful, res: " + res);
             dispatch(toogleAdd());
         })

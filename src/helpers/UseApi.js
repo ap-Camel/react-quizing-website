@@ -14,7 +14,7 @@ export default async function UseApi(url, method, body, callback) {
     let text;
     let response = "";
     try {
-        response = await res.clone().json();
+        response = await res.clone().text();
     } catch (error) {
         response = "";
     }
@@ -54,7 +54,13 @@ export default async function UseApi(url, method, body, callback) {
             alert((await res.text()));
         break;
         case 500:
-            alert("something went wrong, please try again later or contact out support staff");
+            try {
+                const object = (await res.json()).errors;
+                const messages = Object.values(object);
+                alert(messages);
+            } catch (error) {
+                alert(response);
+            }
         break;
         default:
             alert(`status code: ${res.status}`);

@@ -7,6 +7,8 @@ import getDifficulty from "../../../helpers/getDifficulty";
 import TopQuizList from "../../reusables/containers/TopQuizList";
 import PrvQuestionsList from '../../reusables/containers/PrvQuestionsList';
 
+import apiUrl from '../../../helpers/apiUrl';
+
 function PubQuizDetailsPage() {
 
     const {id} = useParams();
@@ -18,14 +20,14 @@ function PubQuizDetailsPage() {
     // const [url, seturl] = React.useState(id);
 
     React.useEffect(() => {
-        UseApi(`https://quizwebsite.azurewebsites.net/exam/${id}`, "GET", null, (res) => {
+        UseApi(`${apiUrl}/exam/${id}`, "GET", null, (res) => {
             setExamInfo(res);
         } )
     }, []);
 
     React.useEffect(() => {
         if(examInfo !== "") {
-            UseApi(`https://quizwebsite.azurewebsites.net/question/onlyTitle?examID=${examInfo.id}`, "GET", null, res => {
+            UseApi(`${apiUrl}/question/onlyTitle?examID=${examInfo.id}`, "GET", null, res => {
                 setQuestions(res);
             });
         }

@@ -2,6 +2,8 @@ import React from "react";
 import UseApi from "../../../helpers/UseApi";
 import ExaminationInfo from "../../reusables/fragments/cards/ExaminationInfo";
 
+import apiUrl from '../../../helpers/apiUrl';
+
 function UserQuizHistoryPage() {
 
 
@@ -9,7 +11,7 @@ function UserQuizHistoryPage() {
 
 
     React.useEffect(() => {
-        UseApi("https://quizwebsite.azurewebsites.net/examination", "GET", null, (res) => {
+        UseApi(`${apiUrl}/examination`, "GET", null, (res) => {
             setExaminations(res);
             console.log(res);
         })

@@ -8,12 +8,15 @@ import SearchIcon from "../icons/SearchIcon";
 
 import { setSearchResults } from '../../../../features/exam/examSearchResults';
 
+import apiUrl from "../../../../helpers/apiUrl";
 
 function SearchButton({placeholder, type}) {
 
     const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
+
+    console.log(apiUrl);
 
     const [searchFilter, setSearchFilter] = React.useState("");
 
@@ -31,7 +34,7 @@ function SearchButton({placeholder, type}) {
 
     async function handleSubmit() {
 
-        const res = await fetch(`https://quizwebsite.azurewebsites.net/exam/search/${searchFilter}`, {
+        const res = await fetch(`${apiUrl}/exam/search/${searchFilter}`, {
             method: "GET",
             headers: {
                 'accept': 'application/json',

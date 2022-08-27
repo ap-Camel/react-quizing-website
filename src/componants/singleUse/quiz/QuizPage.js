@@ -3,6 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import UseApi from '../../../helpers/UseApi';
 
+import apiUrl from '../../../helpers/apiUrl';
+
 function QuizPage() {
 
     const {id} = useParams();
@@ -14,7 +16,7 @@ function QuizPage() {
 
     React.useEffect(() => {
         if(localStorage.getItem("quiz") === "") {
-            UseApi(`https://quizwebsite.azurewebsites.net/quiz/${id}`, "GET", null, (res) => {
+            UseApi(`${apiUrl}/quiz/${id}`, "GET", null, (res) => {
             setQuizData(res);
             setRemianingTime(res.duration);
             localStorage.setItem("quiz", JSON.stringify(res));
@@ -96,7 +98,7 @@ function QuizPage() {
         let answer = window.confirm("are you sure you want to submit?");
         console.log(answer);
         if(answer) {
-            UseApi("https://quizwebsite.azurewebsites.net/quiz", "POST", JSON.stringify(quiz), (res) => {
+            UseApi(`${apiUrl}/quiz`, "POST", JSON.stringify(quiz), (res) => {
             alert(res);
             navigate(-1);
         });

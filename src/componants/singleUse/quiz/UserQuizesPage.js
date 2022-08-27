@@ -6,6 +6,8 @@ import AddModal from "../../reusables/modals/AddModal";
 
 import UseApi from "../../../helpers/UseApi";
 import { toogleAdd } from '../../../features/modals/modalSlice';
+
+import apiUrl from '../../../helpers/apiUrl';
  
 function UserQuizesPage() {
 
@@ -16,7 +18,7 @@ function UserQuizesPage() {
 
     React.useEffect(() => {
 
-        UseApi("https://quizwebsite.azurewebsites.net/exam", "GET", null, (res) => {
+        UseApi(`${apiUrl}/exam`, "GET", null, (res) => {
             setUserQuizes(res);
         })
     }, []);
@@ -86,7 +88,7 @@ function UserQuizesPage() {
     if(userQuizes === "") {
         return(
             <div className="user-quiz-page-wrapper">
-            {modal.addIsOpen && <AddModal addObject={addObject} url="https://quizwebsite.azurewebsites.net/exam" header={"New Quiz"}/>}
+            {modal.addIsOpen && <AddModal addObject={addObject} url={`${apiUrl}/exam`} header={"New Quiz"}/>}
             <div className="user-quiz-page-button">
                 <button onClick={handleAddExam}>Add New</button>
             </div>
@@ -96,7 +98,7 @@ function UserQuizesPage() {
 
     return (
         <div className="user-quiz-page-wrapper">
-            {modal.addIsOpen && <AddModal addObject={addObject} url="https://quizwebsite.azurewebsites.net/exam" header={"New Quiz"}/>}
+            {modal.addIsOpen && <AddModal addObject={addObject} url={`${apiUrl}/exam`} header={"New Quiz"}/>}
             <div className="user-quiz-page-button">
                 <button onClick={handleAddExam}>Add New</button>
             </div>

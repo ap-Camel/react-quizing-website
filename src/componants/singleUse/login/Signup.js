@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 import './Login.css';
 
+import apiUrl from '../../../helpers/apiUrl'
+
 function Signup() {
 
     const user = useSelector( state => state.user);
@@ -31,7 +33,7 @@ function Signup() {
         event.preventDefault();
 
         if(checkPassword() && checkInputFields()) {
-            const res = await fetch("https://quizwebsite.azurewebsites.net/webUser", {
+            const res = await fetch(`${apiUrl}/webUser`, {
                 method: "POST",
                 headers: {
                     'accept': 'application/json',

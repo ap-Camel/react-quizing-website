@@ -6,6 +6,8 @@ import './Login.css';
 import Signup from './Signup';
 import { setUser } from '../../../features/user/userSlice';
 
+import apiUrl from '../../../helpers/apiUrl';
+
 
 function Login() {
 
@@ -28,7 +30,7 @@ function Login() {
     async function checkLogin(event) {
         event.preventDefault();
         
-        const res = await fetch("https://quizwebsite.azurewebsites.net/auth", {
+        const res = await fetch(`${apiUrl}/auth`, {
             method: "POST",
             headers: {
                 'accept': 'application/json',

@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import UseApi from "../../../helpers/UseApi";
 import ExaminationAnswersInfo from "../../reusables/fragments/cards/ExaminationAnswersInfo";
 
+import apiUrl from '../../../helpers/apiUrl';
+
 function UserQuizHistoryDetailsPage() {
 
     const {id} = useParams();
@@ -10,7 +12,7 @@ function UserQuizHistoryDetailsPage() {
     const [list, setList] = React.useState("");
 
     React.useEffect(() => {
-        UseApi(`https://quizwebsite.azurewebsites.net/examination/${id}`, "GET", null, (res) => {
+        UseApi(`${apiUrl}/examination/${id}`, "GET", null, (res) => {
             setList(res);
             console.log(res);
         });

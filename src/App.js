@@ -19,6 +19,8 @@ import HomeNotLogin from './componants/singleUse/home/HomeNoLogin';
 
 import './App.css';
 
+var apiUrl = "https://localhost:7295";
+
 function App() {
 
   const user = useSelector(state => state.user);

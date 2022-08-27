@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import UseApi from "../../../helpers/UseApi";
 import SearchResultQuizCard from "../../reusables/fragments/cards/SearchResultQuizCard";
 
+import apiUrl from '../../../helpers/apiUrl';
+
 function PubUserInfo() {
 
     const {username} = useParams();
@@ -10,7 +12,7 @@ function PubUserInfo() {
     const [list, setList] = React.useState("");
 
     React.useEffect(() => {
-        UseApi(`https://quizwebsite.azurewebsites.net/exam/username/${username}`, "GET", null, (res) => {
+        UseApi(`${apiUrl}/exam/username/${username}`, "GET", null, (res) => {
             setList(res);
             console.log(res);
         })
