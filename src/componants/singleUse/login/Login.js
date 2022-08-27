@@ -74,7 +74,7 @@ function Login() {
                 />
                 <label>password</label>
                 <input 
-                    type="text"
+                    type="password"
                     name="password"
                     value={loginForm.password}
                     placeholder="password"

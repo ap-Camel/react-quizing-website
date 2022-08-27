@@ -15,6 +15,7 @@ import UserDetailsPage from './componants/singleUse/user/UserDetailsPage';
 import UserQuizHistoryPage from './componants/singleUse/user/UserQuizHistoryPage';
 import UserQuizHistoryDetailsPage from './componants/singleUse/user/UserQuizHistoryDetailsPage';
 import PubUserInfo from './componants/singleUse/user/PubUserInfo';
+import HomeNotLogin from './componants/singleUse/home/HomeNoLogin';
 
 import './App.css';
 
@@ -27,15 +28,12 @@ function App() {
     <Router>
       <NavBar />
       <Routes>
-        <Route path='/' element={ <Home /> }></Route>
-        <Route path='/search-results' element={ <QuizSearchResultPage /> }></Route>
-        <Route path='/details/:id' element={ <PubQuizDetailsPage /> }></Route>
-        <Route path='/quiz/:id' element={ <QuizPage /> }></Route>
-        <Route path='/user/:username' element={ <PubUserInfo /> }></Route>
+        
         {
           !user.loggedIn && 
           (
             <>
+              <Route path='/' element={ <HomeNotLogin />}></Route>
               <Route path='/login' element={ <Login /> } ></Route>
               <Route path='/signup' element={ <Signup /> } ></Route>
             </>
@@ -46,11 +44,16 @@ function App() {
           user.loggedIn && 
           (
             <>
+              <Route path='/' element={ <Home /> }></Route>
               <Route path='/quizes' element={ <UserQuizesPage /> } ></Route>
               <Route path='/quizDetails/:id' element={ <PrvQuizDetailsPage /> } ></Route>
               <Route path='/user' element={ <UserDetailsPage /> }></Route>
               <Route path='/quizHistory' element={ <UserQuizHistoryPage /> }></Route>
               <Route path='/quizHistory/:id' element={ <UserQuizHistoryDetailsPage  />}></Route>
+              <Route path='/search-results' element={ <QuizSearchResultPage /> }></Route>
+              <Route path='/details/:id' element={ <PubQuizDetailsPage /> }></Route>
+              <Route path='/quiz/:id' element={ <QuizPage /> }></Route>
+              <Route path='/user/:username' element={ <PubUserInfo /> }></Route>
             </>
           )
         }

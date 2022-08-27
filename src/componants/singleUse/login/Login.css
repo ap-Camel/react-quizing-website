@@ -8,7 +8,7 @@
     grid-template-columns: 1fr 3fr;
     padding: 1em;
     row-gap: 1em;
-    background-color: aqua;
+    background-color: #66fcf1;
     margin: 1em;
     border-radius: 5px;
     max-width: 500px;
@@ -22,8 +22,9 @@
     justify-self: center;
     min-height: 2.5em;
     font-size: medium;
-    background-color:beige;
-    border-radius: 7px;
+    background-color:#1f2833;
+    border-radius: 5px;
+    color: #66fcf1;
 }
 
 .login-container input {
