@@ -20,7 +20,7 @@
 - the website connects to an external api that handles all the data manipulation.
 - [link to api page](https://github.com/ap-Camel/QuizingApi).
 
-## DEsclaimers
+## Disclaimers
 
 - this website is hosted on azure and is hosted for free so it is slow.
 - the api is also hosted on azure for free so its also slow there.
