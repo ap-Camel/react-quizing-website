@@ -51,7 +51,7 @@ here the confirm password and username fields  work properly but the email field
 - in this page the public information of a quiz is shown
 - user can also see what questions are in the quiz if they choose to by pressing show button
 
-![public quiz details](https://github.com/ap-Camel/react-quizing-website/blob/master/github-pictures/Screenshot%202022-08-27%20214624.png}
+![public quiz details](https://github.com/ap-Camel/react-quizing-website/blob/master/github-pictures/Screenshot%202022-08-27%20214624.png)
 
 ### Quiz Page
 
