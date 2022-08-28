@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+# Simple React Quizing Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Website Description
 
-## Available Scripts
+- users can create their own account.
+- users can search for quizes and see the details of the quiz they select.
+- users can create their own quizes and add questions to them.
+- users can take a quiz.
+- users can see they results of the past quizes they took.
+- users can select a past quiz they took and see their answers and if the answers were correct.
+- users can see their user information and can change them.
 
-In the project directory, you can run:
+## Dependencies
 
-### `npm start`
+- need to install [react-router-dom](https://www.npmjs.com/package/react-router-dom).
+- need to install [redux@toolkit](https://redux-toolkit.js.org/).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Backend
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- the website connects to an external api that handles all the data manipulation.
+- [link to api page](https://github.com/ap-Camel/QuizingApi).
 
-### `npm test`
+## DEsclaimers
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- this website is hosted on azure and is hosted for free so it is slow.
+- the api is also hosted on azure for free so its also slow there.
+- the design was not the main focus of this project, but using react, and redux, make componansts reusable and making sure everything works properly.
+- there is no css library, all css is custome.
 
-### `npm run build`
+## Examples
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Signup page
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+here the confirm password and username fields  work properly but the email field is not actually email and can put any string in.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![sign up page](https://github.com/ap-Camel/react-quizing-website/blob/master/github-pictures/Screenshot%202022-08-28%20061051.png)
 
-### `npm run eject`
+### Login page
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![login page](https://github.com/ap-Camel/react-quizing-website/blob/master/github-pictures/Screenshot%202022-08-28%20061035.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Search results page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- the search results are also stored in localStorage so not to make too many api calls
+- this page also shows the top quizes based on populaity
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![search results](https://github.com/ap-Camel/react-quizing-website/blob/master/github-pictures/Screenshot%202022-08-27%20202749.png)
 
-## Learn More
+### Public Quiz Details page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- in this page the public information of a quiz is shown
+- user can also see what questions are in the quiz if they choose to by pressing show button
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![public quiz details](https://github.com/ap-Camel/react-quizing-website/blob/master/github-pictures/Screenshot%202022-08-27%20214624.png}
 
-### Code Splitting
+### Quiz Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- in this page user can take quiz
 
-### Analyzing the Bundle Size
+![quiz page](https://github.com/ap-Camel/react-quizing-website/blob/master/github-pictures/Screenshot%202022-08-28%20053725.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### My Quizes page
 
-### Making a Progressive Web App
+-in this page user can see the quizes they created and also create new quizes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![My quizes page](https://github.com/ap-Camel/react-quizing-website/blob/master/github-pictures/Screenshot%202022-08-27%20214712.png)
 
-### Advanced Configuration
+### private quiz details page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- in this page user can see all information about quiz.
+- user can also see the questions and answers in the quiz.
+- user can also add new questions and answers.
 
-### Deployment
+![private quiz details](https://github.com/ap-Camel/react-quizing-website/blob/master/github-pictures/Screenshot%202022-08-27%20214805.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Add question modal
 
-### `npm run build` fails to minify
+- here the user can add new question and answers of the question
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![add question modal](https://github.com/ap-Camel/react-quizing-website/blob/master/github-pictures/Screenshot%202022-08-27%20214938.png)
+
+### Edit quiz modal
+
+- here user can edit quiz information
+
+![edit modal](https://github.com/ap-Camel/react-quizing-website/blob/master/github-pictures/Screenshot%202022-08-27%20215620.png)
+
+### History page
+
+- here user can see their history of taken examinations
+
+![history page](https://github.com/ap-Camel/react-quizing-website/blob/master/github-pictures/Screenshot%202022-08-28%20054017.png)
+
+### History details page
+
+- here user can see which answers they chose.
+
+![history details page](https://github.com/ap-Camel/react-quizing-website/blob/master/github-pictures/Screenshot%202022-08-28%20054728.png)
