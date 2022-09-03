@@ -3,6 +3,7 @@
 ## Live Version
 
 - [Website Link](https://quizingwebsite.azurewebsites.net).
+- login test account: email: name@user.com     password: 12345678
 
 ## Website Description
 
